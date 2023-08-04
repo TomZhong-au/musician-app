@@ -13,11 +13,6 @@ app.use("/musician", musicianRoutes);
 
 app.use(express.static("public"));
 
-// Index route
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build/index.html"));
-});
-
 app.get("/health", (req, res) => {
   res.status(200).send("a healthy server");
 });
@@ -28,6 +23,11 @@ app.get("/env", (req, res) => {
     process.env.key1 ? process.env.key1 : "NOT AVAILABLE"
   }
   `);
+});
+
+// Index route
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
 // initialize store
