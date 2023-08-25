@@ -19,6 +19,9 @@ app.get("*", (req, res) => {
 });
 
 app.get("/healt", (req, res) => res.send("healthy server"));
+app.get("/env", (req, res) =>
+  res.send(`the secret of this server is ${process.env.SECRET}`)
+);
 
 // initialize store
 const musician = new Musician(store);
